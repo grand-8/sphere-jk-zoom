@@ -5,6 +5,7 @@ import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { generateMockData } from "@/lib/data-generator"
 import type { LifeTrajectory } from "@/lib/data-generator"
+import { FilterControls } from "./filter-controls"
 
 // Ajouter ces imports en haut du fichier
 import { ZoomIn, ZoomOut } from "lucide-react"
@@ -1152,24 +1153,27 @@ export default function GradientOutlineSphere() {
 
   // Remplacer le return à la fin du composant par:
   return (
-    <div ref={containerRef} className="w-full h-screen">
-      {/* Compteur de trajectoires (temporairement commenté)
-      <div className="absolute top-4 left-4 text-white/90 bg-black/40 backdrop-blur-sm px-3 py-2 rounded-lg z-10">
-        <div className="text-sm font-medium">{displayedTrajectoryCount} trajectoires affichées</div>
+    <>
+      <FilterControls />
+      <div ref={containerRef} className="w-full h-screen">
+        {/* Compteur de trajectoires (temporairement commenté)
+        <div className="absolute top-4 left-4 text-white/90 bg-black/40 backdrop-blur-sm px-3 py-2 rounded-lg z-10">
+          <div className="text-sm font-medium">{displayedTrajectoryCount} trajectoires affichées</div>
+        </div>
+        */}
+
+        {/* Bouton de zoom (temporairement commenté)
+        <button
+          onClick={handleZoomToggle}
+          className="absolute top-4 right-4 z-10 bg-black/40 backdrop-blur-sm text-white/90 p-2 rounded-lg hover:bg-black/60 transition-colors"
+          aria-label={isZoomedIn ? "Dézoomer" : "Zoomer"}
+        >
+          {isZoomedIn ? <ZoomOut size={20} /> : <ZoomIn size={20} />}
+        </button>
+        */}
+
+        {/*selectedTrajectory && <ProfileModal trajectory={selectedTrajectory} onClose={handleCloseProfile} />*/}
       </div>
-      */}
-
-      {/* Bouton de zoom (temporairement commenté)
-      <button
-        onClick={handleZoomToggle}
-        className="absolute top-4 right-4 z-10 bg-black/40 backdrop-blur-sm text-white/90 p-2 rounded-lg hover:bg-black/60 transition-colors"
-        aria-label={isZoomedIn ? "Dézoomer" : "Zoomer"}
-      >
-        {isZoomedIn ? <ZoomOut size={20} /> : <ZoomIn size={20} />}
-      </button>
-      */}
-
-      {/*selectedTrajectory && <ProfileModal trajectory={selectedTrajectory} onClose={handleCloseProfile} />*/}
-    </div>
+    </>
   )
 }

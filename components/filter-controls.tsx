@@ -16,10 +16,8 @@ import { useLifeTrajectoryStore } from "@/lib/store"
 
 export function FilterControls() {
   const [open, setOpen] = useState(false)
-  const { filter, setFilter } = useLifeTrajectoryStore((state) => ({
-    filter: state.filter,
-    setFilter: state.setFilter,
-  }))
+  const filter = useLifeTrajectoryStore((state) => state.filter)
+  const setFilter = useLifeTrajectoryStore((state) => state.setFilter)
 
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
